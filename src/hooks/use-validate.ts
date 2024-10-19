@@ -1,4 +1,3 @@
-import { InputError, InputValidator } from "@/utils/types";
 import { useEffect, useState } from "react";
 
 export const useValidator = (validateFn: InputValidator) => {

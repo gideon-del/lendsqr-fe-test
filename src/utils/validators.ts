@@ -1,5 +1,3 @@
-import { InputValidator } from "./types";
-
 export const validateEmail: InputValidator = (email) => {
   const trimedValue = email.trim();
   if (!trimedValue.length) {
