@@ -15,3 +15,11 @@ button {
   border: none;
   font-family: inherit;
 }
+
+input {
+  border: none;
+  font-family: inherit;
+}
+input:focus-within {
+  outline: none;
+}

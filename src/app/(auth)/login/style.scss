@@ -1,0 +1,87 @@
+@import "../../../utils/styles.utils.scss";
+.login__container {
+  max-width: 1500px;
+  margin-inline: auto;
+  display: grid;
+  flex-direction: column;
+  min-height: 100svh;
+  grid-template-columns: repeat(2, 1fr);
+  gap: min(69px, 10vw);
+}
+.login__header {
+  padding-left: 97px;
+}
+.login__header > figure:first-child {
+  margin-bottom: 73px;
+}
+.login__main {
+  display: grid;
+
+  flex: 1;
+  align-items: center;
+  padding-inline: 100px;
+  box-shadow: 0 15px 90px #00000008;
+  width: 100%;
+}
+
+.login__header,
+.login__main {
+  padding-block: min(160px, 14vh);
+}
+.login__title {
+  font-weight: 700;
+  font-size: 40px;
+  color: $primary-text-dark;
+  margin-bottom: 10px;
+}
+.login__desc {
+  color: $secondary-100;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 60px;
+}
+.login__input--container {
+  display: flex;
+  border: 2px solid $secondary-100-15;
+  padding: 17.5px 16px 12.5px;
+  border-radius: 5px;
+}
+.login__input {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+}
+.login__input::placeholder {
+  color: $secondary-100;
+}
+.login__input--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.show__btn,
+.forgot__password__btn {
+  color: $primary-100;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: $text-spacing-sm;
+  text-transform: uppercase;
+}
+.forgot__password__btn {
+  display: block;
+  margin-block: 24px 30px;
+}
+.login__btn {
+  width: 100%;
+  padding-block: 15px 13px;
+  background-color: $primary-100;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $neutral-100;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: $text-spacing-sm;
+}
