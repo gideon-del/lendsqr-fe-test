@@ -71,6 +71,9 @@
   display: block;
   margin-block: 24px 30px;
 }
+.login__input--container:focus-within {
+  border-color: $primary-100;
+}
 .login__btn {
   width: 100%;
   padding-block: 15px 13px;
@@ -84,4 +87,9 @@
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: $text-spacing-sm;
+}
+.input__error {
+  color: $error;
+  font-weight: 400;
+  font-size: 12px;
 }
