@@ -88,8 +88,34 @@
   text-transform: uppercase;
   letter-spacing: $text-spacing-sm;
 }
+.login__input--container.error {
+  border-color: $error;
+}
 .input__error {
   color: $error;
   font-weight: 400;
   font-size: 12px;
+}
+
+@media (max-width: 61.5em) {
+  .login__container {
+    // grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+  .login__main,
+  .login__header {
+    padding: 0;
+  }
+  .login__header > figure:first-child {
+    margin: 10px;
+  }
+  .illustration {
+    display: none;
+  }
+  .login__main {
+    align-items: start;
+  }
 }

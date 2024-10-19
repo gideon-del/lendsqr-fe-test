@@ -34,7 +34,7 @@ const LoginPage = () => {
         <figure>
           <Image src={logo} alt="Lendsqr" />
         </figure>
-        <figure>
+        <figure className="illustration">
           <Image src={illustration} alt="illustration" />
         </figure>
       </section>
@@ -44,7 +44,10 @@ const LoginPage = () => {
           <p className="login__desc">Enter details to login.</p>
           <fieldset className="login__input--wrapper">
             <div>
-              <div className="login__input--container" tabIndex={0}>
+              <div
+                className={`login__input--container ${emailError && "error"} `}
+                tabIndex={0}
+              >
                 <input
                   type="email"
                   className="login__input"
@@ -60,7 +63,12 @@ const LoginPage = () => {
               )}
             </div>
             <div>
-              <div className="login__input--container" tabIndex={0}>
+              <div
+                className={`login__input--container ${
+                  passwordError && "error"
+                } `}
+                tabIndex={0}
+              >
                 <input
                   type={showPassword ? "text" : "password"}
                   className="login__input"

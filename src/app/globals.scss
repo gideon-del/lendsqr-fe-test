@@ -23,3 +23,12 @@ input {
 input:focus-within {
   outline: none;
 }
+fieldset {
+  border: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
