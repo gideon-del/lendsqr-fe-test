@@ -1,0 +1,69 @@
+@import "../../../../utils/styles.utils.scss";
+.header {
+  min-height: 100px;
+  padding: 35px 30px;
+  box-shadow: 3px 0px 20px $black-4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo__form__container {
+  display: flex;
+  gap: 168px;
+  width: fit-content;
+  flex-basis: 60%;
+}
+.search__form {
+  display: flex;
+  height: 40px;
+  border-radius: $rounded-md;
+  border: 1px solid $secondary-200;
+  max-width: 400px;
+  overflow: hidden;
+  width: 100%;
+}
+.search__input {
+  flex: 1;
+  padding: 12px 20px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.search__input::placeholder {
+  color: $secondary-100;
+}
+.search__btn {
+  min-width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary-100;
+}
+
+.doc__btn {
+  font-family: $roboto-font;
+  font-size: 1rem;
+  font-weight: 400;
+  color: $secondary-200;
+  text-decoration: underline;
+  margin-right: 47px;
+}
+.header__links {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+.header__user--container {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  gap: 10px;
+}
+.header__action {
+  display: flex;
+  align-items: center;
+}
+.user__name {
+  font-weight: 500;
+  font-size: 1rem;
+  color: $secondary-200;
+}

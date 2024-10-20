@@ -2,10 +2,10 @@ export declare global {
   export interface InputError {
     message: string;
   }
-  export type InputValidator = (val: string) => InputError | null;
+  type InputValidator = (val: string) => InputError | null;
 
-  export type Users = UserDetails[];
-  export interface UserDetails {
+  type Users = UserDetails[];
+  interface UserDetails {
     fullName: string;
     organization: string;
     username: string;
@@ -20,7 +20,7 @@ export declare global {
     guarantors: Guarantor[];
   }
 
-  export interface PersonalInformation {
+  interface PersonalInformation {
     phoneNumber: string;
     emailAddress: string;
     bvn: number;
@@ -30,7 +30,7 @@ export declare global {
     residence: string;
   }
 
-  export interface EducationAndEmployment {
+  interface EducationAndEmployment {
     levelOfEducation: string;
     employmentStatus: string;
     sectorOfEmployment: string;
@@ -40,10 +40,22 @@ export declare global {
     loanRepayment: string;
   }
 
-  export interface Guarantor {
+  interface Guarantor {
     name: string;
     phoneNumber: string;
     emailAddress: string;
     relationship: string;
   }
+  interface SidBarLinkItem {
+    icon: string;
+    title: string;
+    route?: string;
+  }
+  type SideBarLink =
+    | SidBarLinkItem
+    | {
+        name: string;
+        subLinks: SidBarLinkItem[];
+      };
+  type SidebarLinks = SideBarLink[];
 }
