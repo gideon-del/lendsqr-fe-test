@@ -18,10 +18,13 @@ import ReportsIcon from "@/assets/images/icons/chart-bar.svg";
 import PreferencesIcon from "@/assets/images/icons/sliders-h.svg";
 import FeeIcon from "@/assets/images/icons/badge-percent.svg";
 import AuditIcon from "@/assets/images/icons/clipboard-list.svg";
-export const sidbarLinks: SidebarLinks = [
+
+export const sidebarLinks: SidebarLinks = [
   {
     title: "Dashboard",
     icon: DashboardIcon,
+    pattern: "^/$",
+    route: "/",
   },
   {
     name: "CUSTOMERS",
@@ -29,6 +32,8 @@ export const sidbarLinks: SidebarLinks = [
       {
         title: "Users",
         icon: UsersIcon,
+        route: "/user",
+        pattern: "^/user*",
       },
       {
         title: "Guarantors",

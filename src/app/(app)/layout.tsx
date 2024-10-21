@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import Header from "./_components/Header";
 import { Roboto, Work_Sans } from "next/font/google";
+import Sidebar from "./_components/sidebar";
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -16,9 +17,12 @@ const roboto = Roboto({
 });
 const AppLayout = ({ children }: AppLayoutProps) => {
   return (
-    <div className={`${workSans.className} ${roboto.variable}`}>
+    <div className={`${workSans.className} ${roboto.variable} app__container`}>
       <Header />
-      {children}
+      <main className="app__main">
+        <Sidebar />
+        <div>{children}</div>
+      </main>
     </div>
   );
 };

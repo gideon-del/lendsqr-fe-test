@@ -1,8 +1,10 @@
 $primary-100: #39cdcc;
+$primary-100-6: #37cdcd0f;
 $primary-text-dark: #213f7d;
 $secondary-100: #545f7d;
 $secondary-100-15: #545f7d26;
 $secondary-200: #213f7d;
+$secondary-200-15: #21407d7a;
 $neutral-100: #fff;
 $black-4: #0000000a;
 $error: #d31b3a;
@@ -10,3 +12,13 @@ $text-spacing-sm: 2px;
 // Border radius
 $rounded-md: 8px;
 $roboto-font: var(--font-roboto);
+
+@mixin flex-layout($direction: row, $gap: 10px) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin padding-spacing-all($all: 10px) {
+  padding: $all;
+}

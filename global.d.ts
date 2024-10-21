@@ -46,16 +46,16 @@ export declare global {
     emailAddress: string;
     relationship: string;
   }
-  interface SidBarLinkItem {
+  interface SingleLinkRoute {
     icon: string;
     title: string;
     route?: string;
+    pattern?: string;
   }
-  type SideBarLink =
-    | SidBarLinkItem
-    | {
-        name: string;
-        subLinks: SidBarLinkItem[];
-      };
+  interface NestedLinkRoutes {
+    name: string;
+    subLinks: SingleLinkRoute[];
+  }
+  type SideBarLink = SingleLinkRoute | NestedLinkRoutes;
   type SidebarLinks = SideBarLink[];
 }

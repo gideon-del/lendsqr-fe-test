@@ -45,7 +45,9 @@ const LoginPage = () => {
           <fieldset className="login__input--wrapper">
             <div>
               <div
-                className={`login__input--container ${emailError && "error"} `}
+                className={`login__input--container ${
+                  submitted && emailError && "error"
+                } `}
                 tabIndex={0}
               >
                 <input
@@ -65,7 +67,7 @@ const LoginPage = () => {
             <div>
               <div
                 className={`login__input--container ${
-                  passwordError && "error"
+                  submitted && passwordError && "error"
                 } `}
                 tabIndex={0}
               >

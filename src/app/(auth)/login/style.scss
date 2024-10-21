@@ -1,4 +1,7 @@
 @import "../../../utils/styles.utils.scss";
+body {
+  background-color: #fff;
+}
 .login__container {
   max-width: 1500px;
   margin-inline: auto;
@@ -16,7 +19,7 @@
 }
 .login__main {
   display: grid;
-
+  background-color: #fff;
   flex: 1;
   align-items: center;
   padding-inline: 100px;

@@ -1,0 +1,56 @@
+@import "../../../../utils/styles.utils.scss";
+.sidebar__container {
+  min-width: 283px;
+  box-shadow: 0px 5px 20px $black-4;
+  background-color: #fff;
+  padding-block: 39px;
+  overflow-y: scroll;
+  height: calc(100svh - 100px);
+  .organization__btn,
+  .single__link,
+  .nested__link--title {
+    padding-inline: 30px;
+  }
+  .organization__btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 52px;
+    span {
+      font-weight: 400;
+      font-size: 1rem;
+      color: $secondary-200;
+    }
+  }
+  .single__link {
+    @include flex-layout();
+    min-height: 40px;
+    align-items: center;
+    color: $secondary-200;
+    opacity: 0.6;
+    font-weight: 400;
+    font-size: 1rem;
+    border-left: 3px solid transparent;
+    &.active {
+      background-color: $primary-100-6;
+      border-left-color: $primary-100;
+      opacity: 1;
+    }
+  }
+
+  .nested__links {
+    @include flex-layout($direction: column);
+    li {
+      list-style: none;
+    }
+  }
+  .nested__link--title {
+    font-weight: 500;
+    font-size: 12px;
+    color: $secondary-100;
+    margin-bottom: 10px;
+  }
+  .sidbar__links--container {
+    @include flex-layout($direction: column, $gap: 30px);
+  }
+}
