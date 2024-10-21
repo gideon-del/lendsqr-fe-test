@@ -22,3 +22,6 @@ $roboto-font: var(--font-roboto);
 @mixin padding-spacing-all($all: 10px) {
   padding: $all;
 }
+@mixin calculte-dynamic-height($diff: 100px) {
+  height: calc(100svh - $diff);
+}

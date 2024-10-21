@@ -1,1 +1,41 @@
-@import url("../../../../utils/styles.utils.scss");
+@import "../../../../utils/styles.utils.scss";
+@mixin default-font-style($weight: 500, $size: 14px, $color: $secondary-100) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+.user__dashboard--container {
+  @include padding-spacing-all($all: 60px);
+  @include calculte-dynamic-height();
+  overflow-y: auto;
+  .user__reports--container {
+    @include flex-layout($gap: 26px);
+    margin-top: 40px;
+    .user__card--container {
+      @include padding-spacing-all($all: 30px);
+      padding-top: 20px;
+      height: 160px;
+      max-width: 240px;
+      width: 100%;
+      border: 1px solid $primary-100-6;
+      box-shadow: 3px 5px 20px $black-4;
+      background-color: #fff;
+      border-radius: 4px;
+      figure {
+        margin-bottom: 14px;
+      }
+      .user__card--title {
+        @include default-font-style();
+        text-transform: capitalize;
+        margin-bottom: 12px;
+      }
+      .user__card--result {
+        @include default-font-style(
+          $weight: 600,
+          $size: 1.5rem,
+          $color: $secondary-200
+        );
+      }
+    }
+  }
+}
