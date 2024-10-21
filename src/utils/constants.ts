@@ -25,3 +25,15 @@ export const userReports = [
     img: UserWithSavingsImg,
   },
 ];
+
+export enum FILTER_STATUS {
+  OPEN,
+  CLOSED,
+}
+export enum ACTIONS {
+  CHANGE,
+  RESET,
+  APPLY,
+  CLOSE,
+  OPEN,
+}

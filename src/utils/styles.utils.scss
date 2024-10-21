@@ -3,6 +3,7 @@ $primary-100-6: #37cdcd0f;
 $primary-text-dark: #213f7d;
 $secondary-100: #545f7d;
 $secondary-100-15: #545f7d26;
+$secondary-100-14: #545f7d24;
 $secondary-200: #213f7d;
 $secondary-200-15: #21407d7a;
 $neutral-100: #fff;
@@ -10,6 +11,7 @@ $black-4: #0000000a;
 $error: #d31b3a;
 $text-spacing-sm: 2px;
 // Border radius
+$rounded-sm: 4px;
 $rounded-md: 8px;
 $roboto-font: var(--font-roboto);
 
@@ -24,4 +26,8 @@ $roboto-font: var(--font-roboto);
 }
 @mixin calculte-dynamic-height($diff: 100px) {
   height: calc(100svh - $diff);
+}
+
+@mixin add-shadow($x: 3px, $y: 5px, $blur: 20px) {
+  box-shadow: $x $y $blur $black-4;
 }

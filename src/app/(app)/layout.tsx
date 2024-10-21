@@ -2,12 +2,13 @@ import React, { ReactNode } from "react";
 import Header from "./_components/Header";
 import { Roboto, Work_Sans } from "next/font/google";
 import Sidebar from "./_components/sidebar";
+import MenuFilterProvider from "@/context/filter-menu";
 
 interface AppLayoutProps {
   children: ReactNode;
 }
 const workSans = Work_Sans({
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 const roboto = Roboto({
@@ -21,7 +22,9 @@ const AppLayout = ({ children }: AppLayoutProps) => {
       <Header />
       <main className="app__main">
         <Sidebar />
-        <div>{children}</div>
+        <MenuFilterProvider>
+          <div>{children}</div>
+        </MenuFilterProvider>
       </main>
     </div>
   );

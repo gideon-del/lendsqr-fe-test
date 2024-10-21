@@ -58,4 +58,14 @@ export declare global {
   }
   type SideBarLink = SingleLinkRoute | NestedLinkRoutes;
   type SidebarLinks = SideBarLink[];
+  interface FilterStructure {
+    date: string;
+    email: string;
+    organization: string[];
+    selectedOrganization: string;
+    phoneNumber: string;
+    selectedDate: Date | null;
+    selectedStatus: string;
+    status: string[];
+  }
 }

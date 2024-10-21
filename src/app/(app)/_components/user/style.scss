@@ -10,7 +10,7 @@
   overflow-y: auto;
   .user__reports--container {
     @include flex-layout($gap: 26px);
-    margin-top: 40px;
+    margin-block: 40px;
     .user__card--container {
       @include padding-spacing-all($all: 30px);
       padding-top: 20px;
@@ -19,14 +19,14 @@
       width: 100%;
       border: 1px solid $primary-100-6;
       box-shadow: 3px 5px 20px $black-4;
-      background-color: #fff;
+      background-color: $neutral-100;
       border-radius: 4px;
       figure {
         margin-bottom: 14px;
       }
       .user__card--title {
         @include default-font-style();
-        text-transform: capitalize;
+        text-transform: uppercase;
         margin-bottom: 12px;
       }
       .user__card--result {
@@ -36,6 +36,21 @@
           $color: $secondary-200
         );
       }
+    }
+  }
+  .user__table--container {
+    @include padding-spacing-all($all: 30px);
+    padding-bottom: 32px;
+    background-color: $neutral-100;
+    border-radius: 4px;
+    .user__table {
+      width: 100%;
+      overflow: auto;
+    }
+    .user__table--head-btn {
+      @include flex-layout();
+      @include default-font-style($weight: 600, $size: 12px);
+      text-transform: uppercase;
     }
   }
 }

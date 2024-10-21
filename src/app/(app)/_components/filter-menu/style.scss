@@ -1,0 +1,13 @@
+@import "../../../../utils/styles.utils.scss";
+.filter__menu--container {
+  @include padding-spacing-all(20px);
+  @include add-shadow();
+  padding-block: 30px 28px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  background-color: $neutral-100;
+  border: 1px solid $secondary-100-14;
+  border-radius: $rounded-sm;
+}
