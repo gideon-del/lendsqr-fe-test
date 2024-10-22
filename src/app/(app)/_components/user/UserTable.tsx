@@ -1,5 +1,6 @@
 import React from "react";
 import UserTableHead from "./UserTableHead";
+import UserTableItem from "./UserTableItem";
 const userTableTitles = [
   "organization",
   "Username",
@@ -20,6 +21,10 @@ const UserTable = () => {
             <th></th>
           </tr>
         </thead>
+        <tbody>
+          <UserTableItem />
+          <UserTableItem />
+        </tbody>
       </table>
     </section>
   );

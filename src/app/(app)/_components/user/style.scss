@@ -43,9 +43,64 @@
     padding-bottom: 32px;
     background-color: $neutral-100;
     border-radius: 4px;
+
     .user__table {
       width: 100%;
       overflow: auto;
+      border-collapse: collapse;
+      &--item {
+        width: 100%;
+        vertical-align: baseline;
+        div {
+          margin-top: 15px;
+        }
+        .user__status {
+          height: 30px;
+          padding-block: 7px 6px;
+          border-radius: 100px;
+        }
+
+        &:first-child {
+          div {
+            margin-top: 30px;
+          }
+        }
+
+        td {
+          @include default-font-style($weight: 400);
+          padding-bottom: 16px;
+          .more__icon--btn {
+            vertical-align: middle;
+          }
+          &.more__menu--container {
+            position: relative;
+            .more__menu {
+              @include add-shadow();
+
+              @include padding-spacing-all($all: 20px);
+              @include flex-layout($direction: column, $gap: 20px);
+              position: absolute;
+              bottom: -182%;
+              z-index: 99999;
+              right: 10%;
+              background-color: $neutral-100;
+              width: 180px;
+              height: 130px;
+              border: 1px solid $secondary-100-4;
+              border-radius: $rounded-sm;
+              &--action {
+                @include flex-layout($gap: 8px);
+                @include default-font-style();
+
+                align-items: center;
+              }
+            }
+          }
+        }
+        &:not(:last-child) {
+          border-bottom: 1px solid $secondary-200-10;
+        }
+      }
     }
     .user__table--head-btn {
       @include flex-layout();
