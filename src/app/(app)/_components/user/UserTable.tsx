@@ -12,8 +12,12 @@ const userTableTitles = [
   "Date joined",
   "Status",
 ];
-const UserTable = () => {
+interface UserTableProps {
+  users: Users;
+}
+const UserTable = ({ users }: UserTableProps) => {
   const { filters } = useMenuFilter();
+  console.log(users);
   return (
     <section className="user__table--container">
       <table className="user__table">
@@ -26,8 +30,9 @@ const UserTable = () => {
           </tr>
         </thead>
         <tbody>
-          <UserTableItem />
-          <UserTableItem />
+          {users.map((user) => (
+            <UserTableItem key={user.twitter} {...user} />
+          ))}
         </tbody>
       </table>
       {filters.status == FILTER_STATUS.OPEN && <MenuFilter />}

@@ -1,0 +1,52 @@
+@import "../../../../../utils/styles.utils.scss";
+.pagination__bar {
+  &--container {
+    @include flex-layout();
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  &--per-page {
+    @include flex-layout($gap: 10px);
+    @include default-font-style($weight: 400);
+    align-items: center;
+  }
+  &--input {
+    @include default-font-style($color: $secondary-200);
+    height: 30px;
+    border-radius: $rounded-sm;
+    background-color: $secondary-200-10;
+    display: grid;
+    place-items: center;
+    padding: 7px 12px;
+    &:focus-within {
+      outline: 3px solid $secondary-100-4;
+    }
+  }
+  &--btn-container {
+    @include flex-layout();
+    align-items: center;
+  }
+  &--btn {
+    @include flex-layout($gap: 0);
+    border-radius: $rounded-md;
+    width: 24px;
+    height: 24px;
+    background-color: $secondary-200-10;
+    align-items: center;
+    justify-content: center;
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+  &--num {
+    @include default-font-style($size: 1rem);
+    opacity: 0.6;
+    &.active {
+      opacity: 1;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

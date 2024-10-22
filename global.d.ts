@@ -5,10 +5,13 @@ export declare global {
   type InputValidator = (val: string) => InputError | null;
 
   type Users = UserDetails[];
-  interface UserDetails {
+  export interface UserDetails {
+    firstName: string;
+    lastName: string;
     fullName: string;
     organization: string;
     username: string;
+    emailAddress: string;
     phoneNumber: string;
     dateJoined: string;
     status: string;
@@ -18,11 +21,11 @@ export declare global {
     facebook: string;
     instagram: string;
     guarantors: Guarantor[];
+    id: string;
   }
 
-  interface PersonalInformation {
+  export interface PersonalInformation {
     phoneNumber: string;
-    emailAddress: string;
     bvn: number;
     gender: string;
     maritalStatus: string;
@@ -30,7 +33,7 @@ export declare global {
     residence: string;
   }
 
-  interface EducationAndEmployment {
+  export interface EducationAndEmployment {
     levelOfEducation: string;
     employmentStatus: string;
     sectorOfEmployment: string;
@@ -40,12 +43,13 @@ export declare global {
     loanRepayment: string;
   }
 
-  interface Guarantor {
+  export interface Guarantor {
     name: string;
     phoneNumber: string;
     emailAddress: string;
     relationship: string;
   }
+
   interface SingleLinkRoute {
     icon: string;
     title: string;

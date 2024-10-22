@@ -46,6 +46,9 @@
       width: 100%;
       overflow: auto;
       border-collapse: collapse;
+      th:not(:last-child) {
+        padding-right: 35px;
+      }
       &--item {
         width: 100%;
         vertical-align: baseline;
@@ -53,9 +56,33 @@
           margin-top: 15px;
         }
         .user__status {
+          @include default-font-style($weight: 400);
           height: 30px;
           padding-block: 7px 6px;
+
+          padding-inline: 12px;
           border-radius: 100px;
+          text-transform: capitalize;
+          margin-inline: auto;
+          display: grid;
+          place-items: center;
+          width: fit-content;
+          &.inactive {
+            background-color: $secondary-100-6;
+            color: $secondary-100;
+          }
+          &.pending {
+            background-color: $pending-10;
+            color: $pending;
+          }
+          &.blacklisted {
+            background-color: $blacklisted-10;
+            color: $blacklisted;
+          }
+          &.active {
+            background-color: $active-10;
+            color: $active;
+          }
         }
 
         &:first-child {

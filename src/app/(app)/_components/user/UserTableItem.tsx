@@ -5,8 +5,9 @@ import deleteIcon from "@/assets/images/icons/delete.svg";
 import activateIcon from "@/assets/images/icons/activate-user.svg";
 import moreIcon from "@/assets/images/icons/ic-more-vert-18px.svg";
 import UserTableAction from "./UserTableAction";
+import { formatDate } from "@/utils/helpers";
 
-const UserTableItem = () => {
+const UserTableItem = (prop: UserDetails) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -16,22 +17,22 @@ const UserTableItem = () => {
   return (
     <tr className="user__table--item">
       <td>
-        <div>Lendsqr</div>
+        <div>{prop.organization}</div>
       </td>
       <td>
-        <div>Adedeji</div>
+        <div>{prop.firstName}</div>
       </td>
       <td>
-        <div>adedeji@lendsqr.com</div>
+        <div>{prop.emailAddress}</div>
       </td>
       <td>
-        <div>08078903721</div>
+        <div>{prop.personalInformation.phoneNumber}</div>
       </td>
       <td>
-        <div>May 15, 2020 10:00 AM</div>
+        <div>{formatDate(prop.dateJoined)}</div>
       </td>
       <td>
-        <div className="user__status">Inactive</div>
+        <div className={`user__status ${prop.status}`}>{prop.status}</div>
       </td>
       <td className="more__menu--container">
         <button className="more__icon--btn" onClick={toggleMenu}>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./style.scss";
 const MenuFilter = () => {
   return (
     <form className="filter__menu--container">
