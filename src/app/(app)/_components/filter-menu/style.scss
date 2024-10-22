@@ -1,13 +1,35 @@
 @import "../../../../utils/styles.utils.scss";
-.filter__menu--container {
-  @include padding-spacing-all(20px);
-  @include add-shadow();
-  padding-block: 30px 28px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 270px;
-  background-color: $neutral-100;
-  border: 1px solid $secondary-100-14;
-  border-radius: $rounded-sm;
+
+.filter__menu {
+  &--container {
+    @include padding-spacing-all(20px);
+    @include add-shadow();
+    @include flex-layout($direction: column, $gap: 20px);
+    padding-block: 30px 28px;
+    position: absolute;
+    top: 27%;
+    left: 15px;
+    width: 270px;
+    background-color: $neutral-100;
+    border: 1px solid $secondary-100-14;
+    border-radius: $rounded-sm;
+    overflow-y: auto;
+  }
+
+  &--group {
+    @include flex-layout($direction: column, $gap: 6px);
+  }
+  &--label {
+    @include default-font-style($color: $secondary-100);
+  }
+  &--input {
+    @include default-font-style($weight: 400);
+    padding: 12px 20px;
+    font-family: inherit;
+    opacity: 0.7;
+    max-width: 230px;
+    height: 40px;
+    border: 1px solid $secondary-200;
+    border-radius: $rounded-md;
+  }
 }

@@ -9,13 +9,12 @@ const UserTableHead = ({ title }: { title: string }) => {
   const onClick = () => {
     if (!buttonRef.current || !dispatch) return;
     const { x, y, height } = buttonRef.current.getBoundingClientRect();
-
     if (filters.status === FILTER_STATUS.CLOSED) {
       dispatch({
         type: ACTIONS.OPEN,
         payload: {
           point: {
-            x,
+            x: Math.min(x, document.documentElement.clientWidth - 400),
             y: y + height + 14,
           },
         },

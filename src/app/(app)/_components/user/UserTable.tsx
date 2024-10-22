@@ -1,6 +1,9 @@
 import React from "react";
 import UserTableHead from "./UserTableHead";
 import UserTableItem from "./UserTableItem";
+import { FILTER_STATUS } from "@/utils/constants";
+import MenuFilter from "../filter-menu";
+import { useMenuFilter } from "@/context/filter-menu";
 const userTableTitles = [
   "organization",
   "Username",
@@ -10,6 +13,7 @@ const userTableTitles = [
   "Status",
 ];
 const UserTable = () => {
+  const { filters } = useMenuFilter();
   return (
     <section className="user__table--container">
       <table className="user__table">
@@ -26,6 +30,7 @@ const UserTable = () => {
           <UserTableItem />
         </tbody>
       </table>
+      {filters.status == FILTER_STATUS.OPEN && <MenuFilter />}
     </section>
   );
 };

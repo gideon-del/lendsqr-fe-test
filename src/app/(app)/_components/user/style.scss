@@ -1,13 +1,11 @@
 @import "../../../../utils/styles.utils.scss";
-@mixin default-font-style($weight: 500, $size: 14px, $color: $secondary-100) {
-  font-size: $size;
-  font-weight: $weight;
-  color: $color;
-}
+
 .user__dashboard--container {
   @include padding-spacing-all($all: 60px);
   @include calculte-dynamic-height();
+  scrollbar-width: none;
   overflow-y: auto;
+
   .user__reports--container {
     @include flex-layout($gap: 26px);
     margin-block: 40px;
@@ -43,7 +41,7 @@
     padding-bottom: 32px;
     background-color: $neutral-100;
     border-radius: 4px;
-
+    position: relative;
     .user__table {
       width: 100%;
       overflow: auto;
@@ -76,7 +74,6 @@
             position: relative;
             .more__menu {
               @include add-shadow();
-
               @include padding-spacing-all($all: 20px);
               @include flex-layout($direction: column, $gap: 20px);
               position: absolute;

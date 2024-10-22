@@ -33,3 +33,9 @@ $roboto-font: var(--font-roboto);
 @mixin add-shadow($x: 3px, $y: 5px, $blur: 20px) {
   box-shadow: $x $y $blur $black-4;
 }
+
+@mixin default-font-style($weight: 500, $size: 14px, $color: $secondary-100) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
