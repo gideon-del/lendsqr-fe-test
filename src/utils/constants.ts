@@ -36,6 +36,8 @@ export enum ACTIONS {
   APPLY,
   CLOSE,
   OPEN,
+  ADD_ORGANIZARION,
 }
 
 export const PAGE_OFFSETS = [10, 20, 30, 40, 50, 60];
+export const STATUS = ["all", "pending", "inactive", "blacklisted", "active"];

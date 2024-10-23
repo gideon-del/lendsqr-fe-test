@@ -145,3 +145,13 @@ export function transformGaurantor(gaurantor: Guarantor): TransformedInfo[] {
     },
   ];
 }
+
+export function addOrganizations(users: Users): string[] {
+  const organization: string[] = [];
+  users.forEach((user) => {
+    if (!organization.includes(user.organization)) {
+      organization.push(user.organization);
+    }
+  });
+  return organization.sort();
+}

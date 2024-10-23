@@ -65,11 +65,9 @@ export declare global {
   interface FilterStructure {
     date: string;
     email: string;
-    organization: string[];
     selectedOrganization: string;
     phoneNumber: string;
     selectedDate: Date | null;
     selectedStatus: string;
-    status: string[];
   }
 }

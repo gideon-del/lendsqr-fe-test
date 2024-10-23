@@ -2,14 +2,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-import { userReports } from "@/utils/constants";
+import { ACTIONS, userReports } from "@/utils/constants";
 import UserCard from "./UserCard";
 import UserTable from "./UserTable";
 import PaginationBar from "./pagination/PaginationBar";
 import { usePagination } from "@/hooks/use-pagination";
+import { useMenuFilter } from "@/context/filter-menu";
+import { addOrganizations } from "@/utils/helpers";
 
 const UserDetails = () => {
   const [loading, setisLoading] = useState(true);
+  const { dispatch } = useMenuFilter();
   const [users, setUsers] = useState<Users>([]);
   const {
     paginatedData,
@@ -36,7 +39,10 @@ const UserDetails = () => {
       console.log("loading");
       const users = (await res.json()) as Users;
       setUsers(users);
-      console.log("Init");
+      dispatch!({
+        type: ACTIONS.ADD_ORGANIZARION,
+        payload: { organizations: addOrganizations(users) },
+      });
       init(users);
     } catch (error) {
       console.error(error);

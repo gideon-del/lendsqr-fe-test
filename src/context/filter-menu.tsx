@@ -13,36 +13,26 @@ const defaultValue: {
   temp: FilterStructure;
   main: FilterStructure;
   status: FILTER_STATUS;
-  point: {
-    x: number;
-    y: number;
-  };
+  organization: string[];
 } = {
   temp: {
     date: "",
     email: "",
-    organization: [],
     selectedOrganization: "",
     phoneNumber: "",
     selectedDate: null,
     selectedStatus: "",
-    status: [],
   },
   main: {
     date: "",
     email: "",
-    organization: [],
     selectedOrganization: "",
     phoneNumber: "",
     selectedDate: null,
     selectedStatus: "",
-    status: [],
   },
+  organization: [],
   status: FILTER_STATUS.CLOSED,
-  point: {
-    x: 0,
-    y: 0,
-  },
 };
 type IMenuFilterCtx = typeof defaultValue;
 
@@ -56,12 +46,15 @@ type FILTER_ACTIONS =
     }
   | {
       type: ACTIONS.OPEN;
-      payload: {
-        point: { x: number; y: number };
-      };
     }
   | {
       type: ACTIONS.CLOSE;
+    }
+  | {
+      type: ACTIONS.ADD_ORGANIZARION;
+      payload: {
+        organizations: string[];
+      };
     };
 const MenuFilterCtx = createContext<{
   filters: typeof defaultValue;
@@ -76,12 +69,14 @@ const filterReducer = (state: typeof defaultValue, action: FILTER_ACTIONS) => {
       copiedState.temp[name] = value;
       break;
     case ACTIONS.OPEN:
-      const { point } = action.payload;
-      copiedState.point = { ...point };
       copiedState.status = FILTER_STATUS.OPEN;
       break;
     case ACTIONS.CLOSE:
       copiedState.status = FILTER_STATUS.CLOSED;
+      copiedState.temp = { ...copiedState.main };
+      break;
+    case ACTIONS.ADD_ORGANIZARION:
+      copiedState.organization = action.payload.organizations;
       break;
     default:
       copiedState = defaultValue;

@@ -1,8 +1,19 @@
 import React from "react";
 import "./style.scss";
+import { STATUS } from "@/utils/constants";
+import { useMenuFilter } from "@/context/filter-menu";
 const MenuFilter = () => {
+  const {
+    filters: { organization },
+  } = useMenuFilter();
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const filters = Object.fromEntries(formData.entries());
+    console.log(filters);
+  };
   return (
-    <form className="filter__menu--container">
+    <form className="filter__menu--container" onSubmit={onSubmit}>
       <fieldset className="filter__menu--group">
         <label htmlFor="organization" className="filter__menu--label">
           Organization
@@ -12,15 +23,18 @@ const MenuFilter = () => {
           className="filter__menu--input"
           id="organization"
         >
-          <option
-            selected
-            hidden
-            disabled
-            value=""
-            className="filter__menu--option"
-          >
+          <option selected hidden value="" className="filter__menu--option">
             Select
           </option>
+          {organization.map((organization) => (
+            <option
+              value={organization}
+              className="filter__menu--option"
+              key={organization}
+            >
+              {organization}
+            </option>
+          ))}
         </select>
       </fieldset>
       <fieldset className="filter__menu--group">
@@ -75,17 +89,25 @@ const MenuFilter = () => {
           Status
         </label>
         <select name="status" className="filter__menu--input" id="status">
-          <option
-            selected
-            hidden
-            disabled
-            value=""
-            className="filter__menu--option"
-          >
-            Select
-          </option>
+          {STATUS.map((status) => (
+            <option
+              value={status}
+              className="filter__menu--option"
+              key={status}
+            >
+              {status}
+            </option>
+          ))}
         </select>
       </fieldset>
+      <div className="filter__menu--btn-container">
+        <button className="filter__menu--btn reset" type="button">
+          Reset
+        </button>
+        <button className="filter__menu--btn filter" type="submit">
+          Filter
+        </button>
+      </div>
     </form>
   );
 };
