@@ -75,3 +75,73 @@ export function transformPersonalInformation(
     },
   ];
 }
+
+export function transformEducation(user: UserDetails): TransformedInfo[] {
+  return [
+    {
+      title: "level of education",
+      value: user.educationAndEmployment.levelOfEducation,
+    },
+    {
+      title: "employment status",
+      value: user.educationAndEmployment.employmentStatus,
+    },
+    {
+      title: "sector of employment",
+      value: user.educationAndEmployment.sectorOfEmployment,
+    },
+    {
+      title: "Duration of employment",
+      value: user.educationAndEmployment.durationOfEmployment,
+    },
+    {
+      title: "office email",
+      value: user.educationAndEmployment.officeEmail,
+    },
+    {
+      title: "Monthly income",
+      value: user.educationAndEmployment.monthlyIncome,
+    },
+    {
+      title: "loan repayment",
+      value: user.educationAndEmployment.loanRepayment,
+    },
+  ];
+}
+
+export function transformSocials(user: UserDetails): TransformedInfo[] {
+  return [
+    {
+      title: "Twitter",
+      value: user.twitter,
+    },
+    {
+      title: "Facebook",
+      value: user.facebook,
+    },
+    {
+      title: "Instagram",
+      value: user.instagram,
+    },
+  ];
+}
+export function transformGaurantor(gaurantor: Guarantor): TransformedInfo[] {
+  return [
+    {
+      title: "full Name",
+      value: gaurantor.name,
+    },
+    {
+      title: "Phone Number",
+      value: gaurantor.phoneNumber,
+    },
+    {
+      title: "Email Address",
+      value: gaurantor.emailAddress,
+    },
+    {
+      title: "Relationship",
+      value: gaurantor.relationship,
+    },
+  ];
+}

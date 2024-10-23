@@ -17,7 +17,7 @@ interface UserTableProps {
 }
 const UserTable = ({ users }: UserTableProps) => {
   const { filters } = useMenuFilter();
-  console.log(users);
+
   return (
     <section className="user__table--container">
       <table className="user__table">

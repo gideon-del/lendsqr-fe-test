@@ -10,7 +10,10 @@ import { useRouter } from "next/navigation";
 import UserInfo from "./_components/UserInfo";
 import {
   getUserFromLocalStorag,
+  transformEducation,
+  transformGaurantor,
   transformPersonalInformation,
+  transformSocials,
 } from "@/utils/helpers";
 import Loader from "../../_components/Loader";
 const UserDetailsPage = () => {
@@ -88,6 +91,18 @@ const UserDetailsPage = () => {
               name="Personal Information"
               subInfo={transformPersonalInformation(user)}
             />
+            <UserInfo
+              name="Education and Employment"
+              subInfo={transformEducation(user)}
+            />
+            <UserInfo name="Socials" subInfo={transformSocials(user)} />
+            {user.guarantors.map((guarantor, i) => (
+              <UserInfo
+                name={i === 0 ? "Guarantor" : ""}
+                subInfo={transformGaurantor(guarantor)}
+                key={`${guarantor.name}${i}`}
+              />
+            ))}
           </section>
         </>
       ) : (

@@ -26,7 +26,7 @@ const UserDetails = () => {
     try {
       setisLoading(true);
       const res = await fetch(
-        `https://api.json-generator.com/templates/27oT5C0V9yl-/data`,
+        `https://api.json-generator.com/templates/kVQOgM6McxqY/data`,
         {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_JSON_SECRET}`,
@@ -47,8 +47,7 @@ const UserDetails = () => {
   useEffect(() => {
     getUsers();
   }, []);
-  console.log(paginatedData, "Paginated");
-  console.log(users, "Users");
+
   return (
     <section className="user__dashboard--container">
       {!loading ? (
