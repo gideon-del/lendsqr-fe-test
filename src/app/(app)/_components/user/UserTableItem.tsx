@@ -5,15 +5,19 @@ import deleteIcon from "@/assets/images/icons/delete.svg";
 import activateIcon from "@/assets/images/icons/activate-user.svg";
 import moreIcon from "@/assets/images/icons/ic-more-vert-18px.svg";
 import UserTableAction from "./UserTableAction";
-import { formatDate } from "@/utils/helpers";
+import { addToLocalStorage, formatDate } from "@/utils/helpers";
+import { useRouter } from "next/navigation";
 
 const UserTableItem = (prop: UserDetails) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { push } = useRouter();
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-
+  const navigateToDetail = () => {
+    addToLocalStorage(prop);
+    push(`/user/${prop.id}`);
+  };
   return (
     <tr className="user__table--item">
       <td>
@@ -44,7 +48,7 @@ const UserTableItem = (prop: UserDetails) => {
             <UserTableAction
               image={viewIcon}
               title="View Details"
-              onClick={() => {}}
+              onClick={navigateToDetail}
             />
             <UserTableAction image={deleteIcon} title="Blacklist User" />
             <UserTableAction image={activateIcon} title="Activate User" />
