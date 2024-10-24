@@ -155,3 +155,69 @@ export function addOrganizations(users: Users): string[] {
   });
   return organization.sort();
 }
+
+export function filterUsers(users: Users, filter: FilterStructure) {
+  const filteredUsers: Users = [];
+  const isFilter = checkFilter(filter);
+
+  for (let i = 0; i < users.length; i++) {
+    if (!isFilter) {
+      filteredUsers.push(...users);
+      break;
+    }
+    const user = users[i];
+    let addUser = false;
+    if (
+      filter.selectedStatus &&
+      filter.selectedStatus !== "all" &&
+      user.status !== filter.selectedStatus
+    ) {
+      continue;
+    }
+    if (user.status === filter.selectedStatus) {
+      addUser = true;
+    }
+    if (filter.date && checkDate(filter.date, user.dateJoined)) {
+      addUser = true;
+    }
+    if (
+      filter.selectedOrganization &&
+      user.organization.includes(filter.selectedOrganization)
+    ) {
+      addUser = true;
+    }
+
+    if (filter.username && user.username.includes(filter.username)) {
+      addUser = true;
+    }
+
+    if (filter.email && user.emailAddress.includes(filter.email)) {
+      addUser = true;
+    }
+
+    if (addUser) {
+      filteredUsers.push(user);
+    }
+  }
+  return filteredUsers;
+}
+
+function checkDate(date: string, userDate: string) {
+  const [transformedDate, tranformedUserDate] = [
+    new Date(date),
+    new Date(userDate),
+  ];
+  console.log(tranformedUserDate > transformedDate);
+  return tranformedUserDate > transformedDate;
+}
+
+function checkFilter(filter: FilterStructure) {
+  return Boolean(
+    filter.date ||
+      filter.email ||
+      filter.phoneNumber ||
+      filter.selectedOrganization ||
+      (filter.selectedStatus && filter.selectedStatus !== "all") ||
+      filter.username
+  );
+}

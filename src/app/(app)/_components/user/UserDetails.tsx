@@ -8,12 +8,16 @@ import UserTable from "./UserTable";
 import PaginationBar from "./pagination/PaginationBar";
 import { usePagination } from "@/hooks/use-pagination";
 import { useMenuFilter } from "@/context/filter-menu";
-import { addOrganizations } from "@/utils/helpers";
+import { addOrganizations, filterUsers } from "@/utils/helpers";
 
 const UserDetails = () => {
   const [loading, setisLoading] = useState(true);
-  const { dispatch } = useMenuFilter();
+  const {
+    dispatch,
+    filters: { main },
+  } = useMenuFilter();
   const [users, setUsers] = useState<Users>([]);
+  const filteredUser = filterUsers(users, main);
   const {
     paginatedData,
     activePage,
@@ -24,7 +28,7 @@ const UserDetails = () => {
     rightPages,
     init,
     pages,
-  } = usePagination(users);
+  } = usePagination(filteredUser);
   const getUsers = async () => {
     try {
       setisLoading(true);
@@ -36,14 +40,13 @@ const UserDetails = () => {
           },
         }
       );
-      console.log("loading");
       const users = (await res.json()) as Users;
       setUsers(users);
       dispatch!({
         type: ACTIONS.ADD_ORGANIZARION,
         payload: { organizations: addOrganizations(users) },
       });
-      init(users);
+      init(filterUsers(users, main));
     } catch (error) {
       console.error(error);
     } finally {
@@ -53,6 +56,12 @@ const UserDetails = () => {
   useEffect(() => {
     getUsers();
   }, []);
+
+  useEffect(() => {
+    if (users) {
+      init(filterUsers(users, main));
+    }
+  }, [main]);
 
   return (
     <section className="user__dashboard--container">
@@ -72,7 +81,7 @@ const UserDetails = () => {
             onOffsetChange={onOffsetChange}
             onPageChange={onPageChange}
             rightPages={rightPages}
-            total={users.length}
+            total={filteredUser.length}
             totalPages={pages.length - 1}
           />
         </>

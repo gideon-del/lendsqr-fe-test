@@ -67,7 +67,7 @@ export declare global {
     email: string;
     selectedOrganization: string;
     phoneNumber: string;
-    selectedDate: Date | null;
     selectedStatus: string;
+    username: string;
   }
 }

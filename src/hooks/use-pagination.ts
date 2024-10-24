@@ -55,10 +55,9 @@ export const usePagination = <T>(data: T[]) => {
       activePage,
       pageOffset
     );
-    console.log(paginatedData, totalPages);
+
     setPages(convertNumToPages(totalPages));
     setPaginatedData(paginatedData);
-    console.log(data.length);
   };
 
   return {

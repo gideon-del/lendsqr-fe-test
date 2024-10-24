@@ -1,16 +1,30 @@
 import React from "react";
 import "./style.scss";
-import { STATUS } from "@/utils/constants";
+import { ACTIONS, STATUS } from "@/utils/constants";
 import { useMenuFilter } from "@/context/filter-menu";
 const MenuFilter = () => {
   const {
-    filters: { organization },
+    filters: { organization, main },
+    dispatch,
   } = useMenuFilter();
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const filters = Object.fromEntries(formData.entries());
-    console.log(filters);
+    dispatch!({
+      type: ACTIONS.APPLY,
+      payload: {
+        date: filters.date as string,
+        email: filters.email as string,
+        username: filters.username as string,
+        phoneNumber: filters.phone_number as string,
+        selectedOrganization: filters.organization as string,
+        selectedStatus: filters.status as string,
+      },
+    });
+  };
+  const reset = () => {
+    dispatch!({ type: ACTIONS.RESET });
   };
   return (
     <form className="filter__menu--container" onSubmit={onSubmit}>
@@ -22,6 +36,7 @@ const MenuFilter = () => {
           name="organization"
           className="filter__menu--input"
           id="organization"
+          defaultValue={main.selectedOrganization}
         >
           <option selected hidden value="" className="filter__menu--option">
             Select
@@ -46,6 +61,7 @@ const MenuFilter = () => {
           className="filter__menu--input"
           id="username"
           placeholder="User"
+          defaultValue={main.username}
         />
       </fieldset>
       <fieldset className="filter__menu--group">
@@ -58,6 +74,7 @@ const MenuFilter = () => {
           id="email"
           placeholder="Email"
           type="email"
+          defaultValue={main.email}
         />
       </fieldset>
       <fieldset className="filter__menu--group">
@@ -70,6 +87,7 @@ const MenuFilter = () => {
           id="date"
           placeholder="Date"
           type="date"
+          defaultValue={main.date}
         />
       </fieldset>
       <fieldset className="filter__menu--group">
@@ -82,13 +100,19 @@ const MenuFilter = () => {
           id="phone_number"
           placeholder="Phone Number"
           type="number"
+          defaultValue={main.phoneNumber}
         />
       </fieldset>
       <fieldset className="filter__menu--group">
         <label htmlFor="status" className="filter__menu--label">
           Status
         </label>
-        <select name="status" className="filter__menu--input" id="status">
+        <select
+          name="status"
+          className="filter__menu--input"
+          id="status"
+          defaultValue={main.selectedStatus}
+        >
           {STATUS.map((status) => (
             <option
               value={status}
@@ -101,7 +125,11 @@ const MenuFilter = () => {
         </select>
       </fieldset>
       <div className="filter__menu--btn-container">
-        <button className="filter__menu--btn reset" type="button">
+        <button
+          className="filter__menu--btn reset"
+          type="button"
+          onClick={reset}
+        >
           Reset
         </button>
         <button className="filter__menu--btn filter" type="submit">

@@ -10,26 +10,17 @@ import {
   useReducer,
 } from "react";
 const defaultValue: {
-  temp: FilterStructure;
   main: FilterStructure;
   status: FILTER_STATUS;
   organization: string[];
 } = {
-  temp: {
-    date: "",
-    email: "",
-    selectedOrganization: "",
-    phoneNumber: "",
-    selectedDate: null,
-    selectedStatus: "",
-  },
   main: {
     date: "",
     email: "",
     selectedOrganization: "",
     phoneNumber: "",
-    selectedDate: null,
     selectedStatus: "",
+    username: "",
   },
   organization: [],
   status: FILTER_STATUS.CLOSED,
@@ -37,13 +28,6 @@ const defaultValue: {
 type IMenuFilterCtx = typeof defaultValue;
 
 type FILTER_ACTIONS =
-  | {
-      type: ACTIONS.CHANGE;
-      payload: {
-        value: any;
-        name: keyof IMenuFilterCtx["temp"];
-      };
-    }
   | {
       type: ACTIONS.OPEN;
     }
@@ -55,7 +39,12 @@ type FILTER_ACTIONS =
       payload: {
         organizations: string[];
       };
-    };
+    }
+  | {
+      type: ACTIONS.APPLY;
+      payload: FilterStructure;
+    }
+  | { type: ACTIONS.RESET };
 const MenuFilterCtx = createContext<{
   filters: typeof defaultValue;
   dispatch?: Dispatch<FILTER_ACTIONS>;
@@ -64,19 +53,22 @@ const MenuFilterCtx = createContext<{
 const filterReducer = (state: typeof defaultValue, action: FILTER_ACTIONS) => {
   let copiedState = { ...state };
   switch (action.type) {
-    case ACTIONS.CHANGE:
-      const { name, value } = action.payload;
-      copiedState.temp[name] = value;
-      break;
     case ACTIONS.OPEN:
       copiedState.status = FILTER_STATUS.OPEN;
       break;
     case ACTIONS.CLOSE:
       copiedState.status = FILTER_STATUS.CLOSED;
-      copiedState.temp = { ...copiedState.main };
       break;
     case ACTIONS.ADD_ORGANIZARION:
       copiedState.organization = action.payload.organizations;
+      break;
+    case ACTIONS.APPLY:
+      copiedState.main = action.payload;
+      copiedState.status = FILTER_STATUS.CLOSED;
+      break;
+    case ACTIONS.RESET:
+      copiedState.main = defaultValue.main;
+      copiedState.status = FILTER_STATUS.CLOSED;
       break;
     default:
       copiedState = defaultValue;
