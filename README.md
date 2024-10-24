@@ -33,4 +33,20 @@
 
 ### Login
 
-![Login]('designs/login.jpg')
+![Login](designs/login.jpg)
+
+### Login Error
+
+![Login Error](designs/login-error.jpg)
+
+### Users
+
+![users](designs/user.jpg)
+
+### User (Filter and Action dropdown)
+
+![user-filter](designs/user-filter.jpg)
+
+### User Detail
+
+![user-detail](designs/user-detail.jpg)
