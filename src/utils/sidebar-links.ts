@@ -32,8 +32,8 @@ export const sidebarLinks: SidebarLinks = [
       {
         title: "Users",
         icon: UsersIcon,
-        route: "/user",
-        pattern: "^/user*",
+        route: "/users",
+        pattern: "^/users*",
       },
       {
         title: "Guarantors",
