@@ -54,4 +54,30 @@
   .sidbar__links--container {
     @include flex-layout($direction: column, $gap: 30px);
   }
+  .close__menu--container {
+    display: none;
+  }
+  @media (max-width: 1130px) {
+    & {
+      position: fixed;
+      width: min(80%, 283px);
+      height: 100svh;
+      z-index: 99999;
+      top: 0;
+      translate: -200% 0;
+      transition: translate 300ms ease-in-out;
+      &.show {
+        translate: 0 0;
+      }
+    }
+    .close__menu {
+      &--container {
+        @include flex-layout();
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: 30px;
+        margin-bottom: 30px;
+      }
+    }
+  }
 }

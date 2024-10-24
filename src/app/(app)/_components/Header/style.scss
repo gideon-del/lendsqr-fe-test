@@ -70,3 +70,43 @@
   font-size: 1rem;
   color: $secondary-200;
 }
+.menu__btn {
+  display: none;
+}
+@media (max-width: 780px) {
+  .header {
+    @include padding-spacing-all($all: 20px);
+    @include flex-layout($direction: column-reverse);
+    align-items: stretch;
+    height: auto;
+    min-height: 150px;
+  }
+  .header__profile--img {
+    width: 59px;
+  }
+
+  .header__links {
+    margin-right: 0;
+    justify-content: space-between;
+  }
+  .notification__btn {
+    width: 50px;
+  }
+  .header__user--container {
+    margin-left: 0;
+  }
+  .doc__btn {
+    margin-right: 5px;
+  }
+}
+@media (max-width: 1130px) {
+  .menu__btn {
+    display: block;
+  }
+  .logo__form__container {
+    width: auto;
+    figure {
+      display: none;
+    }
+  }
+}

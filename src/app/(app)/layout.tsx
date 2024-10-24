@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+"use client";
+import React, { ReactNode, useState } from "react";
 import Header from "./_components/Header";
 import { Roboto, Work_Sans } from "next/font/google";
 import Sidebar from "./_components/sidebar";
@@ -17,11 +18,15 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 const AppLayout = ({ children }: AppLayoutProps) => {
+  const [showSidebar, setShowSidebar] = useState(false);
   return (
     <div className={`${workSans.className} ${roboto.variable} app__container`}>
-      <Header />
+      <Header openSidebar={() => setShowSidebar(true)} />
       <main className="app__main">
-        <Sidebar />
+        <Sidebar
+          showSidebar={showSidebar}
+          closeSidebar={() => setShowSidebar(false)}
+        />
         <MenuFilterProvider>
           <div>{children}</div>
         </MenuFilterProvider>

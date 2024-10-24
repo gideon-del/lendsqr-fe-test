@@ -49,6 +49,10 @@
       th:not(:last-child) {
         padding-right: 35px;
       }
+      th,
+      &--item {
+        white-space: nowrap;
+      }
       &--item {
         width: 100%;
         vertical-align: baseline;
@@ -130,6 +134,27 @@
       @include flex-layout();
       @include default-font-style($weight: 600, $size: 12px);
       text-transform: uppercase;
+    }
+  }
+  @media (max-width: 1130px) {
+    & {
+      @include padding-spacing-all($all: 20px);
+      @include calculte-dynamic-height($diff: 170px);
+      max-width: 100svw;
+      .user__card--result,
+      .user__card--title {
+        white-space: nowrap;
+      }
+      .user__card--container {
+        min-width: 240px;
+      }
+      .user__reports--container {
+        max-width: 100svw;
+        overflow-x: auto;
+      }
+      .user__table--container {
+        overflow-x: auto;
+      }
     }
   }
 }

@@ -4,13 +4,19 @@ import "./style.scss";
 import Image from "next/image";
 import logo from "@/assets/images/logo-sm.svg";
 import searchIcon from "@/assets/images/icons/search.svg";
+import menuIcon from "@/assets/images/icons/menu.svg";
 import notificationIcon from "@/assets/images/icons/notification.svg";
 import avatar from "@/assets/images/avatar.png";
 import dropDownImg from "@/assets/images/icons/dropdown.svg";
-
-const Header = () => {
+interface HeaderProps {
+  openSidebar: () => void;
+}
+const Header = ({ openSidebar }: HeaderProps) => {
   return (
     <header className="header">
+      <button className="menu__btn" onClick={openSidebar}>
+        <Image src={menuIcon} alt="openmenu" />
+      </button>
       <div className="logo__form__container">
         <figure>
           <Image src={logo} alt="Lendsqr" />
@@ -28,11 +34,11 @@ const Header = () => {
       </div>
       <div className="header__links">
         <button className="doc__btn">Doc</button>
-        <button>
+        <button className="notification__btn">
           <Image src={notificationIcon} alt="notification" />
         </button>
         <div className="header__user--container">
-          <figure>
+          <figure className="header__profile--img">
             <Image src={avatar} alt="avatar" />
           </figure>
           <div className="header__action">
