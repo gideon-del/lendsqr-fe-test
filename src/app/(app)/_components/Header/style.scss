@@ -76,7 +76,10 @@
 @media (max-width: 780px) {
   .header {
     @include padding-spacing-all($all: 20px);
-    @include flex-layout($direction: column-reverse);
+    display: grid;
+    grid-template-areas:
+      "btn icons"
+      "form form";
     align-items: stretch;
     height: auto;
     min-height: 150px;
@@ -84,10 +87,16 @@
   .header__profile--img {
     width: 59px;
   }
-
+  .menu__btn {
+    grid-area: btn;
+  }
+  .logo__form__container {
+    grid-area: form;
+  }
   .header__links {
     margin-right: 0;
     justify-content: space-between;
+    grid-area: icons;
   }
   .notification__btn {
     width: 50px;
