@@ -6,17 +6,18 @@ import activateIcon from "@/assets/images/icons/activate-user.svg";
 import moreIcon from "@/assets/images/icons/ic-more-vert-18px.svg";
 import UserTableAction from "./UserTableAction";
 import { addToLocalStorage, formatDate } from "@/utils/helpers";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const UserTableItem = (prop: UserDetails) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { push } = useRouter();
+  const pathname = usePathname();
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
   const navigateToDetail = () => {
     addToLocalStorage(prop);
-    push(`/user/${prop.id}`);
+    push(`${pathname}/${prop.id}`);
   };
   return (
     <tr className="user__table--item">

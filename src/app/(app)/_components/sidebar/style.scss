@@ -57,6 +57,12 @@
   .close__menu--container {
     display: none;
   }
+  .logout-btn {
+    @include flex-layout();
+    color: $secondary-100;
+    align-items: center;
+    padding-inline: 30px;
+  }
   @media (max-width: 1130px) {
     & {
       position: fixed;

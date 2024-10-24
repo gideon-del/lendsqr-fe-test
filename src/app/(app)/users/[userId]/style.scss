@@ -157,3 +157,41 @@
   background-color: $secondary-100;
   opacity: 20%;
 }
+@media (max-width: 1300px) {
+  .user__detail--container {
+    @include padding-spacing-all($all: 20px);
+  }
+}
+@media (max-width: 1040px) {
+  .user__detail {
+    &--container {
+      @include padding-spacing-all($all: 10px);
+    }
+    &--info-contents {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    &--title-container {
+      flex-wrap: wrap;
+    }
+
+    &--links {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    &--link {
+      white-space: nowrap;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .user__detail--basic {
+    flex-direction: column;
+  }
+  .seperator {
+    width: 100%;
+    height: 1px;
+  }
+}

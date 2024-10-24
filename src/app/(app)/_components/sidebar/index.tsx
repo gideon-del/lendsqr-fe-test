@@ -8,11 +8,19 @@ import NestedLink from "./nested-link";
 import SingleLink from "./single-link";
 import logo from "@/assets/images/logo-sm.svg";
 import closeIcon from "@/assets/images/icons/close.svg";
+import logoutIcon from "@/assets/images/icons/logout.svg";
+import { logout } from "@/app/actions";
+import { useRouter } from "next/navigation";
 interface SidebarProps {
   showSidebar: boolean;
   closeSidebar: () => void;
 }
 const Sidebar = ({ closeSidebar, showSidebar }: SidebarProps) => {
+  const { replace } = useRouter();
+  const onLogOut = async () => {
+    await logout();
+    replace("/login");
+  };
   return (
     <aside className={`sidebar__container ${showSidebar && "show"}`}>
       <div className="close__menu--container">
@@ -40,6 +48,10 @@ const Sidebar = ({ closeSidebar, showSidebar }: SidebarProps) => {
             />
           )
         )}
+        <button className="logout-btn" onClick={onLogOut}>
+          <Image src={logoutIcon} alt="" />
+          <span>Log out</span>
+        </button>
       </nav>
     </aside>
   );

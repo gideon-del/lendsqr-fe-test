@@ -7,10 +7,13 @@ import React, { useState } from "react";
 import { useValidator } from "@/hooks/use-validate";
 import { validateEmail, validatePassword } from "@/utils/validators";
 
+import { useRouter } from "next/navigation";
+import { login } from "@/app/actions";
+
 const LoginPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
+  const { replace } = useRouter();
   const {
     error: emailError,
     value: email,
@@ -21,12 +24,14 @@ const LoginPage = () => {
     value: password,
     error: passwordError,
   } = useValidator(validatePassword);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!submitted) {
       setSubmitted(true);
     }
     if (passwordError || emailError) return;
+    await login();
+    replace("/users");
   };
   return (
     <main className="login__container">

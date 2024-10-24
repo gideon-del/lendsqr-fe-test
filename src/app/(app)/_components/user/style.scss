@@ -103,6 +103,7 @@
           }
           &.more__menu--container {
             position: relative;
+            min-width: 30px;
             .more__menu {
               @include add-shadow();
               @include padding-spacing-all($all: 20px);
