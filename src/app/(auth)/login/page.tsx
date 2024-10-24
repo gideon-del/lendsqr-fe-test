@@ -18,11 +18,13 @@ const LoginPage = () => {
     error: emailError,
     value: email,
     changeValue: changeEmail,
+    changeErrror: changeEmailError,
   } = useValidator(validateEmail);
   const {
     changeValue: changePassword,
     value: password,
     error: passwordError,
+    changeErrror: changePasswordError,
   } = useValidator(validatePassword);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,6 +32,14 @@ const LoginPage = () => {
       setSubmitted(true);
     }
     if (passwordError || emailError) return;
+    if (email !== process.env.NEXT_PUBLIC_EMAIL) {
+      changeEmailError("Email not found");
+      return;
+    }
+    if (password !== process.env.NEXT_PUBLIC_PASSWORD) {
+      changePasswordError("Wrong password");
+      return;
+    }
     await login();
     replace("/users");
   };

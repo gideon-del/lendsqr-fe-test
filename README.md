@@ -8,6 +8,11 @@
 - Vercel (Hosting)
 - Github (Version control)
 
+## Login Credentials
+
+- Email: gideonchidi@lendsqr.com
+- Password: 3jp7P55lV+7'
+
 ## App Features
 
 - Auth form: Added a simple email and password validation. Once validated, a cookie is created for the session and the user is redirected to the user screen
