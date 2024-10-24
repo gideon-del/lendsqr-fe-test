@@ -82,3 +82,8 @@ a {
     transform: rotate(360deg);
   }
 }
+@media (max-width: 1130px) {
+  .app__main {
+    display: block;
+  }
+}
